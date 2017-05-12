@@ -23,9 +23,11 @@
   },
   "homepage": "https://github.com/colinsullivan/supercollider-redux-example#readme",
   "dependencies": {
+    "abletonlink-redux": "0.0.2",
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "supercollider-redux": "0.0.2"
   },
   "babel": {
     "presets": [

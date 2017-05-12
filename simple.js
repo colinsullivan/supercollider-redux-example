@@ -2,6 +2,7 @@
 
 import { createStore } from "redux"
 import supercolliderRedux from "supercollider-redux"
+import SCStoreController from "./SCStoreController"
 
 // When we want the sound to play
 const SIMPLE_SOUND_QUEUED = "SIMPLE_SOUND_QUEUED";
@@ -40,7 +41,7 @@ var rootReducer = function (state = {}, action) {
 };
 
 var store = createStore(rootReducer);
-var scStoreController = new supercolliderRedux.SCStoreController(store);
+var scStoreController = new SCStoreController(store);
 
 setInterval(() => {
   console.log("Queueing simple sound...");

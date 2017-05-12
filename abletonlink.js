@@ -3,6 +3,8 @@
 import { createStore } from "redux"
 import supercolliderRedux from "supercollider-redux"
 import abletonLinkRedux from "abletonlink-redux"
+import SCStoreController from "./SCStoreController"
+import AbletonLinkController from "./AbletonLinkController"
 
 //// When we want the sound to play
 //const SIMPLE_SOUND_QUEUED = "SIMPLE_SOUND_QUEUED";
@@ -43,8 +45,8 @@ var rootReducer = function (state = {}, action) {
 };
 
 var store = createStore(rootReducer);
-var scStoreController = new supercolliderRedux.SCStoreController(store);
-var abletonLinkController = new abletonLinkRedux.AbletonLinkController(store, 'abletonlink');
+var scStoreController = new SCStoreController(store);
+var abletonLinkController = new AbletonLinkController(store, 'abletonlink');
 
 //setInterval(() => {
   //console.log("store.getState()");
