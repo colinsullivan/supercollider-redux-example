@@ -32,12 +32,12 @@
 
     if (lastBeatFloor != beatFloor, {
 
-      if (beatFloor % 3 == 0, {
+      if (beatFloor % 4 == 0, {
         noteFreq = 880;
       }, {
         noteFreq = 440;
       });
-      s.makeBundle(secondsPerBeat, {Synth(\simple, [freq: noteFreq, amp: 0.4]); });
+      s.makeBundle(secondsPerBeat, {Synth(\simple, [freq: noteFreq, amp: 0.1]); });
 
       lastBeatFloor = beatFloor;    
     });
