@@ -1,8 +1,25 @@
+/**
+ *  @file       abletonlink_tempoclock.sc
+ *
+ *	@desc       This is an example for syncing a TempoClock to Ableton Link.
+ *
+ *  @author     Colin Sullivan <colin [at] colin-sullivan.net>
+ *
+ *  @copyright  2017 Colin Sullivan
+ *  @license    Licensed under the MIT license.
+ **/
+
 (
-  var store, lastBeatFloor, clock, pat;
+  var store, lastBeatFloor, clock, pat, clockOffsetSeconds;
 
   API.mountDuplexOSC();
 
+  // I needed this to acutally sync with ableton
+  clockOffsetSeconds = -0.3;
+
+  s.options.outDevice = "JackRouter";
+  s.options.inDevice = "JackRouter";
+  s.options.blockSize = 8;
   s.boot();
 
   store = StateStore.getInstance();
@@ -20,11 +37,11 @@
     // the name of the SynthDef to use for each note
     \instrument, \simple,
     // MIDI note numbers -- converted automatically to Hz
-    \midinote, Pseq([60, 72, 71, 67, 69, 71, 72, 60, 69, 67], inf),
-    //\midinote, Pseq([96, 84, 84, 84], inf),
+    //\midinote, Pseq([60, 72, 71, 67, 69, 71, 72, 60, 69, 67], inf),
+    \midinote, Pseq([96, 84, 84, 84], inf),
     // rhythmic values
-    \dur, Pseq([2, 2, 1, 0.5, 0.5, 1, 1, 2, 2, 4], inf)
-    //\dur, Pseq([1], inf)
+    //\dur, Pseq([2, 2, 1, 0.5, 0.5, 1, 1, 2, 2, 4], inf)
+    \dur, Pseq([1], inf)
   );
 
 
@@ -34,6 +51,7 @@
     var state = store.getState();
     var beat = state.abletonlink.beat;
     var bpm = state.abletonlink.bpm;
+    var tempo = bpm / 60.0;
     //var secondsPerBeat;
     var beatFloor = beat.floor();
     //var noteFreq;
@@ -44,12 +62,12 @@
 
     if (clock == false, {
       "initializing TempoClock...".postln();
-      clock = TempoClock.new(tempo: bpm / 60.0, beats: beat);
+      clock = TempoClock.new(tempo: tempo, beats: beat + (tempo * clockOffsetSeconds));
       "TempoClock initialized.".postln();
       "playing pattern...".postln();
-      pat.play(clock: clock, quant: [4, 0]);
+      pat.play(clock: clock, quant: [4]);
     }, {
-      clock.beats = beat;
+      clock.beats = beat + (tempo * clockOffsetSeconds);
     });
     //secondsPerBeat = 60.0 / bpm;
 

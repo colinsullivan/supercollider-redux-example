@@ -1,6 +1,6 @@
 {
   "name": "supercollider-redux-example",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Example for using supercollider-redux.",
   "main": "main.js",
   "scripts": {

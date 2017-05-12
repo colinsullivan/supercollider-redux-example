@@ -1,3 +1,15 @@
+/**
+ *  @file       simple.sc
+ *
+ *	@desc       This SuperCollider script responds to some simple state
+ *              changes in a supercollider-redux store.
+ *
+ *  @author     Colin Sullivan <colin [at] colin-sullivan.net>
+ *
+ *  @copyright  2017 Colin Sullivan
+ *  @license    Licensed under the MIT license.
+ **/
+
 (
   var store, lastQueuedState;
 

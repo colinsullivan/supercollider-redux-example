@@ -1,5 +1,19 @@
 #!/usr/bin/env node
 
+/**
+ *  @file       abletonlink.js
+ *
+ *	@desc       Ableton Link state changes into state store, forwarded to
+ *	            SuperCollider replica state store.
+ *
+ *  @author     Colin Sullivan <colin [at] colin-sullivan.net>
+ *
+ *  @copyright  2017 Colin Sullivan
+ *  @license    Licensed under the MIT license.
+ **/
+
+
+
 import { createStore } from "redux"
 import supercolliderRedux from "supercollider-redux"
 import abletonLinkRedux from "abletonlink-redux"

@@ -1,5 +1,19 @@
 #!/usr/bin/env node
 
+/**
+ *  @file       simple.js
+ *
+ *	@desc       Arbitrary reducers being sent to SuperCollider, the
+ *	            corresponding SuperCollider script will respond appropriately.
+ *
+ *  @author     Colin Sullivan <colin [at] colin-sullivan.net>
+ *
+ *  @copyright  2017 Colin Sullivan
+ *  @license    Licensed under the MIT license.
+ **/
+
+  
+
 import { createStore } from "redux"
 import supercolliderRedux from "supercollider-redux"
 import SCStoreController from "./SCStoreController"

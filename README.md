@@ -1,2 +1,2 @@
-# supercollider-redux-example
-An example for using supercollider-redux in an application.
+# supercollider-redux and abletonlink-redux examples
+Use supercollider-redux and abletonlink-redux in an application.
