@@ -51,13 +51,13 @@
     var state = store.getState();
     var beat = state.abletonlink.beat;
     var bpm = state.abletonlink.bpm;
-    var tempo = bpm / 60.0;
-    //var secondsPerBeat;
+    var tempo;
     var beatFloor = beat.floor();
-    //var noteFreq;
     
     if (bpm == false, {
       ^this;    
+    }, {
+      tempo = bpm / 60.0;
     });
 
     if (clock == false, {
@@ -69,18 +69,12 @@
     }, {
       clock.beats = beat + (tempo * clockOffsetSeconds);
     });
-    //secondsPerBeat = 60.0 / bpm;
 
     if (lastBeatFloor != beatFloor, {
       "beatFloor:".postln;
       beatFloor.postln;
-
-      //if (beatFloor % 3 == 0, {
-        //noteFreq = 880;
-      //}, {
-        //noteFreq = 440;
-      //});
-      //s.makeBundle(secondsPerBeat, {Synth(\simple, [freq: noteFreq, amp: 0.4]); });
+      "clock.beats:".postln;
+      clock.beats.postln;
 
       lastBeatFloor = beatFloor;    
     });
